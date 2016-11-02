@@ -1,2 +1,2 @@
 # NetCom_Course_Repo
-Course Project of NetComm/Xiamen Univ.
+Course Repository of NetComm/Xiamen Univ.
