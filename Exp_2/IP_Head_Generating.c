@@ -1,13 +1,16 @@
 #include <stdio.h>
+#include <limits.h>
 #include <stdlib.h>
 
 static int  frag[4];
-static unsigned char iphead4b[5][8] = {{4, 5, 0, 0, 0, 0, 1, 4}, // Init fixed bits of version/head length/total length
-						{3, 8, 3, 1}, {15, 15, 0, 1}}; // Init fixed bits of identification/TTL/protocol number
+static unsigned char iphead4b[5][8] = {{4, 5, 0, 0, 0, 0, 1, 8}, // Init fixed bits of version/head length/total length
+						{13, 6, 8, 6, 0}, {15, 15, 0, 1}}; // Init fixed bits of identification/TTL/protocol number
+static short checksum;
 
 void printIP8b(void);
 void fillIPFrag(int *, int);
 void calcChecksum(void);
+void cptChecksum(int, char*);
 
 int
 main(int argc, char *argv[])
@@ -80,7 +83,6 @@ calcChecksum(void)
 {
 	int i, j, sum[4] = {0};
 	bool flag;
-	printIP8b();
 	for(i = 0; i < 5; ++i){
 		for (j = 0; j < 4; ++j)
 		{
@@ -88,6 +90,7 @@ calcChecksum(void)
 		}
 	}
 
+/* THE FOLLOWING CHECKSUM CALCULATING METHOD NEEDS TO BE VERIFIED */
 	while(1){
 		flag = true;
 		for(i = 3; i >= 0; --i){
