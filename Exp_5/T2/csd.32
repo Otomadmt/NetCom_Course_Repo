@@ -1,0 +1,16 @@
+$TTL 1D
+$ORIGIN	132.13.16.172.in-addr.arpa.
+
+@ 	IN 	SOA 	dns.32.csd.	admin (
+	20	;SERIAL number for zone update transfer
+	1D	;REFRESH time interval before slave refresh zone
+	1H	;RETRY time interval before failed REFRESH retry
+	3D	;EXPIRE time interval before slave zone no longer authoritative
+	3H	;MINIMUM time before negative cache expired
+)
+@ 	IN 	NS 	dns.32.csd.
+
+@	IN	PTR	dns.32.csd.
+@	IN	PTR	www.32.csd.
+@	IN 	PTR	www2.32.csd.
+@	IN 	PTR 	ftp.32.csd.
